@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Redirecter</title>
+    <style>
+body {
+    font-family: monospace;
+    padding: 20px;
+    max-width: 500px;
+    margin: 50px auto;
+    background: #fafafa;
+    color: #333;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+h3 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+input,
+button {
+    display: block;
+    width: 100%;
+    margin: 15px 0;
+    padding: 12px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #333;
+}
+
+#result {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff;
+    border: 1px dashed #000;
+    display: none;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile responsiveness only */
+@media (max-width: 600px) {
+    body {
+        margin: 20px auto;
+        padding: 16px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    input,
+    button {
+        font-size: 16px; /* Prevents iOS zoom */
+        padding: 14px;
+    }
+
+    #result {
+        font-size: 0.95rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <h3>Public Redirecter</h3>
+    <input type="text" id="url" placeholder="Paste long URL (https://...)">
+    <input type="text" id="slug" placeholder="Custom slug (optional)">
+    <button onclick="create()">Shorten URL</button>
+    <div id="result"></div>
+
+    <script>
+        async function create() {
+            const url = document.getElementById('url').value;
+            const slug = document.getElementById('slug').value;
+            const resDiv = document.getElementById('result');
+
+            if (!url) { alert('Please enter a URL'); return; }
+
+            try {
+                const response = await fetch('/create', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url, slug: slug || null })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    const link = window.location.origin + '/' + data.slug;
+                    resDiv.innerHTML = `Success! Your permanent link: <br><br><strong><a href="${link}" target="_blank">${link}</a></strong>`;
+                    resDiv.style.display = 'block';
+                } else {
+                    alert(data.detail || 'Error creating redirect');
+                }
+            } catch (e) {
+                alert('Connection to server failed');
+            }
+        }
+    </script>
+</body>
+</html>
