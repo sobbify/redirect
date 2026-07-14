@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Not Found</title>
+
+    <style>
+        html {
+            box-sizing: border-box;
+            background: #000;
+            color: #f0f0f0;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+            font-family: monospace;
+        }
+
+        body {
+            padding: 20px;
+            max-width: 500px;
+            margin: 50px auto;
+            background: #000;
+            color: #f0f0f0;
+        }
+
+        .card {
+            border: 1px dashed #f0f0f0;
+            padding: 30px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 4rem;
+            line-height: 1;
+        }
+
+        h3 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 15px;
+        }
+
+        p {
+            color: #ccc;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+
+        a,
+        button {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            border: 1px dashed #f0f0f0;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        a:hover,
+        button:hover {
+            background: #333;
+            text-decoration: none;
+        }
+
+        .code {
+            color: #888;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                margin: 20px auto;
+                padding: 16px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            a {
+                font-size: 16px;
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>404</h1>
+
+        <h3>Redirect Not Found</h3>
+
+        <p>
+            The short link you're looking for doesn't exist,
+            may have been deleted, or the URL was typed incorrectly.
+        </p>
+
+        <a href="/">← Create a new short link</a>
+
+        <div class="code">
+            Error: Redirect does not exist.
+        </div>
+    </div>
+
+</body>
+</html>

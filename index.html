@@ -6,12 +6,12 @@
     <title>Public Redirecter</title>
     <style>
 body {
-    font-family: monospace;
+
     padding: 20px;
     max-width: 500px;
     margin: 50px auto;
-    background: #fafafa;
-    color: #333;
+    background: #000000;
+    color: #f0f0f0;
     box-sizing: border-box;
 }
 
@@ -19,6 +19,7 @@ body {
 *::before,
 *::after {
     box-sizing: inherit;
+    font-family: monospace;
 }
 
 h3 {
@@ -36,10 +37,10 @@ button {
 }
 
 button {
-    background: #000;
+    background: #000000;
     color: #fff;
     cursor: pointer;
-    border: none;
+    border: 1px dashed #f0f0f0;
     font-weight: bold;
 }
 
@@ -50,15 +51,15 @@ button:hover {
 #result {
     margin-top: 20px;
     padding: 15px;
-    background: #fff;
-    border: 1px dashed #000;
+    background: #000000;
+    border: 1px dashed #fcfcfc;
     display: none;
     word-break: break-word;
     overflow-wrap: anywhere;
 }
 
 a {
-    color: #0066cc;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -92,7 +93,7 @@ a:hover {
     </style>
 </head>
 <body>
-    <h3>Public Redirecter</h3>
+    <h3>Redirecter</h3>
     <input type="text" id="url" placeholder="Paste long URL (https://...)">
     <input type="text" id="slug" placeholder="Custom slug (optional)">
     <button onclick="create()">Shorten URL</button>
